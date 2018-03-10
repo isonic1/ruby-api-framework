@@ -64,7 +64,8 @@ Repository: git@github.com:isonic1/ruby-api-framework.git
 
 ***Run a test:***
 
-* Note: This example uses (THIS EXAMPLE API)[https://jsonplaceholder.typicode.com/]. The POSTs, DELETE and PUTS just simulate these actions and do not work. So that is why you will see failures for the tests on these actions.
+* Note: This example uses [THIS EXAMPLE API](https://jsonplaceholder.typicode.com/). The POSTs, DELETE and PUTS just simulate these actions and do not work. So that is why you will see failures for the tests on these actions.
+* Look at the comments in each spec to give you more specifics on what things do and recommendations...
 
 1. Go into repo: ```cd ruby-api-framework```
 
