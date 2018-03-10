@@ -14,11 +14,11 @@ Repository: git@github.com:isonic1/ruby-api-framework.git
 
 2. Install bundler: ```gem install bundler```
 
-3. Clone the repo: ```git clone git@github.com:discovery-digital/discgo-api-tests.git```
+3. Clone the repo: ```git clone git@github.com:isonic1/ruby-api-framework.git```
 
-4. Go into repo: ```cd discgo-api-tests```
+4. Go into repo: ```cd ruby-api-framework```
 
-5. Run: ```bundle install```
+5. Run: ```ruby dependencies.rb```
 
 6. The above bundle install should install all framework dependencies.
 
@@ -64,6 +64,8 @@ Repository: git@github.com:isonic1/ruby-api-framework.git
 
 ***Run a test:***
 
+* Note: This example uses (THIS EXAMPLE API)[https://jsonplaceholder.typicode.com/]. The POSTs, DELETE and PUTS just simulate these actions and do not work. So that is why you will see failures for the tests on these actions.
+
 1. Go into repo: ```cd ruby-api-framework```
 
 2. Run all tests: ```rspec spec```
@@ -72,7 +74,7 @@ Repository: git@github.com:isonic1/ruby-api-framework.git
 
 * You should see tests running after.
 
-4. Use the runner.rb script.
+4. Use the runner.rb script. *** PREFERRED METHOD ***
     * `$ ruby runner.rb specs (list all specs)`
     * `$ ruby runner.rb posts (runs all posts tests)`
     * `$ ruby runner.rb parallel (runs all specs in parallel using parallel_rspec library. Merges html reports into one!)`
@@ -80,9 +82,9 @@ Repository: git@github.com:isonic1/ruby-api-framework.git
 
 ***Test Results:***
 
-1. Html report: discgo-api-tests/output/rspec.html
+1. Html report: ruby-api-framework/output/rspec.html
 
-2. Json report: discgo-api-tests/output/rspec.json
+2. Json report: ruby-api-framework//output/rspec.json
 
 3. When tests are run in parallel, by default they generate a rspec.html (rspec2.html...) report for every process. I created a script "merge_reports.rb" to combine all reports into one after the tests complete.
 
