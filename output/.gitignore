@@ -1,0 +1,6 @@
+Gemfile.lock
+*.txt
+rspec*
+*.html
+*.log
+.idea

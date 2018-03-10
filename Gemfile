@@ -1,0 +1,12 @@
+source "http://rubygems.org"
+gem 'rspec'
+gem 'faker'
+gem 'httparty'
+gem 'coderay'
+gem 'awesome_print'
+gem 'colorize'
+gem 'parallel_tests'
+gem 'rspec_junit_formatter'
+gem 'nokogiri'
+gem 'pry'
+gem 'os'
