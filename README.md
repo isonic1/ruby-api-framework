@@ -88,11 +88,11 @@ Repository: git@github.com:isonic1/ruby-api-framework.git
 
 1. Html report: ruby-api-framework/output/rspec.html
 
-2. Json report: ruby-api-framework//output/rspec.json
+2. Json report: ruby-api-framework/output/rspec.json (You can use this json output to create your own reports or feed it into an existing reporting framework)
 
-3. When tests are run in parallel, by default they generate a rspec.html ... rspec2.html etc... eport for every process. I created a script "merge_reports.rb" to combine all reports into one after the tests complete.
+3. When tests are run in parallel, by default parallel_rspec generates a report for every process. e.g. rspec.html ... rspec2.html etc... I created a script "merge_reports.rb" to combine all reports into one "rspec.html" after the tests complete.
 
-4. Rspec has a bug when using `--color` with adding ascii characters to the html report. I created a new html formatter to fix this issue. Additionally, I capture the full request path on every api call and print it inside the report on failures. I also modified the html snippet extractor to capture the entire test so you dont have to open the framework to see the logic.
+4. Rspec has a bug when using `--color` with adding ascii characters to the html report. I created a new html formatter to fix this issue. Additionally, I capture the full request path on every api call and print it inside the report on failures. I also modified the html snippet extractor to capture the entire test so you dont have to open the framework to see all the logic of what the test was doing.
     * See the .rspec, .rspec_parallel, and spec_helper.rb files for rspec settings.
     
 ***Debugging with IRB: (Interactive Ruby REPL)***
