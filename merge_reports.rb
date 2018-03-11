@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require 'nokogiri'
+require 'pry'
 
 def durations_of(report)
   report.css('script:contains("duration")').text.match(DURATION_REGEXP)[1].to_f
@@ -58,8 +59,7 @@ DURATION_REGEXP          = /<strong>([\d.]*).*<\/strong>/
 EXAMPLES_FAILURES_REGEXP = /"(.*)"/
 
 def report_merger files
-  #files = Dir.glob("output/rspec*.html")
-  #files = files_array
+  #binding.pry
 
   report_name = Nokogiri::HTML(open(files.first))
 

@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 #put the endpoint constant you're testing here to reduce duplication and insert into context for the rspec.html report...
-ENDPOINT = '/comments'
+COMMENTS = '/comments'
 
-describe "Example API #{ENDPOINT} Endpoint" do
+describe "Example API #{COMMENTS} Endpoint" do
 
   attr_accessor :api
 
@@ -13,10 +13,10 @@ describe "Example API #{ENDPOINT} Endpoint" do
     #you can seed your test data here or in each test for specific reasons...    
   end
 
-  context "GET Comment: #{ENDPOINT}" do
+  context "GET Comment: #{COMMENTS}" do
     #This example shows you how to pass in query parameters
     #get[0] gets the first index of the results output
-    before(:all) { @get = api.get(ENDPOINT, { postId: 5 }) }
+    before(:all) { @get = api.get(COMMENTS, { postId: 5 }) }
     it { expect(@get.code).to eq 200 }
     it { expect(@get.body.is_a? String).to eq true }
     it { expect(json_parse(@get.body)).not_to be_empty }

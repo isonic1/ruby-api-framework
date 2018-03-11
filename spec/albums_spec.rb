@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 #put the endpoint constant you're testing here to reduce duplication and insert into context for the rspec.html report...
-ENDPOINT = '/albums'
+ALBUMS = '/albums'
 
-describe "Example API #{ENDPOINT} Endpoint" do
+describe "Example API #{ALBUMS} Endpoint" do
 
   attr_accessor :api
 
@@ -12,18 +12,18 @@ describe "Example API #{ENDPOINT} Endpoint" do
     self.api = @api
     #you can seed your test data here or in each test for specific reasons... 
     #seed example
-    @get_all = api.get ENDPOINT   
+    @get_all = api.get ALBUMS   
   end
   
   #Use "xit" to set pending tests. You would use this if the endpoint wasn't ready or keeps failing...
-  context "GET #{ENDPOINT}" do
+  context "GET #{ALBUMS}" do
     it { expect(@get_all.code).to eq 200 }
     xit { expect(json_parse(@get_all.body)).not_to be_empty }
   end
 
-  context "GET Specific Album: #{ENDPOINT}/1" do
+  context "GET Specific Album: #{ALBUMS}/1" do
     #This example shows you how to pass in query parameters
-    before(:all) { @get = api.get("#{ENDPOINT}/1") }
+    before(:all) { @get = api.get("#{ALBUMS}/1") }
     it { expect(@get.code).to eq 200 }
     it { expect(@get.body.is_a? String).to eq true }
     it { expect(json_parse(@get.body)).not_to be_empty }

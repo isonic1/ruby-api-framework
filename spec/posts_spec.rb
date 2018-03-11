@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 #put the endpoint constant you're testing here to reduce duplication and insert into context for the rspec.html report...
-ENDPOINT = '/posts'
+POSTS = '/posts'
 
-describe "Example API #{ENDPOINT} Endpoint" do
+describe "Example API #{POSTS} Endpoint" do
 
   attr_accessor :api
 
@@ -15,10 +15,10 @@ describe "Example API #{ENDPOINT} Endpoint" do
 
   #Use available rspec matchers or create custom ones.
   #https://relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-  context "GET #{ENDPOINT}" do
+  context "GET #{POSTS}" do
     #This is the before block of this set of tests/it's
     before(:all) do
-      @get = api.get(ENDPOINT)
+      @get = api.get(POSTS)
       #Use pry in before block to debug the response. e.g. @get.code, @get.body, @get.response, list available methods -> @get.methods etc...
       #binding.pry
     end
@@ -27,9 +27,9 @@ describe "Example API #{ENDPOINT} Endpoint" do
     it { expect(json_parse(@get.body)).not_to be_empty }
   end
 
-  context "GET Specific ID: #{ENDPOINT}/1" do
+  context "GET Specific ID: #{POSTS}/1" do
     #you can also write your blocks like this to save space using curly braces...
-    before(:all) { @get = api.get("#{ENDPOINT}/1") } #;binding.pry }
+    before(:all) { @get = api.get("#{POSTS}/1") } #;binding.pry }
     it { expect(@get.code).to eq 200 }
     it { expect(@get.body.is_a? String).to eq true }
     #or explicitly check that the field equals the value you expect. You can also seed this by doing a POST in the before :all block.
@@ -43,19 +43,19 @@ describe "Example API #{ENDPOINT} Endpoint" do
     it { expect(@get["title"]).to eq "sunt aut facere repellat provident occaecati excepturi optio reprehenderit" }
   end
 
-  context "GET Posts Comments: #{ENDPOINT}/1/comments" do
-    before(:all) { @get = api.get("#{ENDPOINT}/1/comments") }
+  context "GET Posts Comments: #{POSTS}/1/comments" do
+    before(:all) { @get = api.get("#{POSTS}/1/comments") }
     it { expect(@get.code).to eq 200 }
     it { expect(@get.body.is_a? Integer).to be_truthy, "Expected validation to be true, but got false. This should be a String!" } #Example of a custom matcher. Fail on purpose.
     it { expect(json_parse(@get.body)).not_to be_empty }
   end
 
-  context "POST Posts: #{ENDPOINT}" do
+  context "POST Posts: #{POSTS}" do
     before(:all) do
       @title = random_word
       @body = random_sentence
       @userId = rand(1..5)
-      @post = api.post_body(ENDPOINT, { title: @title, body: @body, userId: @userId })
+      @post = api.post_body(POSTS, { title: @title, body: @body, userId: @userId })
       #Get the POST'ed record
       #Note: the resource id "@post["id"]" will not be really created on the server but it will be faked as if.
       #https://github.com/typicode/jsonplaceholder#how-to
@@ -76,19 +76,19 @@ describe "Example API #{ENDPOINT} Endpoint" do
     # it { expect(@get["body"]).to eq @body }
   end
 
-  context "PUT Posts: #{ENDPOINT}" do
+  context "PUT Posts: #{POSTS}" do
     before(:all) do
       @id = rand(1..5)
       @title = random_word
       @body = random_sentence
       @userId = 1
-      @put = api.put("#{ENDPOINT}/1", { id: @id, title: @title, body: @body, userId: @userId })
+      @put = api.put("#{POSTS}/1", { id: @id, title: @title, body: @body, userId: @userId })
       #binding.pry
       #Get the PUT'ed record
       #Note: the resource id "@put["id"]" will not be really created on the server but it will be faked as if.
       #https://github.com/typicode/jsonplaceholder#how-to
       #You can now assert the PUT data is correct by doing a GET.
-      @get = api.get("#{ENDPOINT}/#{@id}")
+      @get = api.get("#{POSTS}/#{@id}")
     end
     it { expect(@put.code).to eq 200 }
     it { expect(@put.body.is_a? String).to eq true }
@@ -103,13 +103,13 @@ describe "Example API #{ENDPOINT} Endpoint" do
     it { expect(@get["body"]).to eq @body }
   end
   
-  context "DELETE Posts: #{ENDPOINT}/1" do
+  context "DELETE Posts: #{POSTS}/1" do
     before(:all) do
       #You could seed this data by doing a POST first, then DELETE, then do a GET to make sure it's deleted.
-      @delete = api.delete("#{ENDPOINT}/1")
+      @delete = api.delete("#{POSTS}/1")
       #The delete doesn't actually delete so the assertions for this GET will fail. 
       #You'd want to check that the GET gets a 404 if it really did delete the record.
-      @get = api.get("#{ENDPOINT}/1")
+      @get = api.get("#{POSTS}/1")
     end
     it { expect(@delete.code).to eq 200 }
     it { expect(@get.code).to eq 404 }
