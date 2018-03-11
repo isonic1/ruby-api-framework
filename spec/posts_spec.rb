@@ -60,7 +60,7 @@ describe "Example API #{POSTS} Endpoint" do
       #Note: the resource id "@post["id"]" will not be really created on the server but it will be faked as if.
       #https://github.com/typicode/jsonplaceholder#how-to
       #You can now assert the POST data is correct by doing a GET.
-      @get = api.get("#{ENDPOINT}/#{@post["id"]}")
+      @get = api.get("#{POSTS}/#{@post["id"]}")
     end
     it { expect(@post.code).to eq 201 }
     it { expect(@post.body.is_a? String).to eq true }
