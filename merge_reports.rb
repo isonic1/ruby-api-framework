@@ -1,3 +1,5 @@
+#I got an insperation from a GIST to do this. I would link the gist here but have lost it. Anyways, thank you (whomeever you are) for solving this solution...
+
 #!/usr/bin/env ruby
 require 'nokogiri'
 require 'pry'
