@@ -15,12 +15,12 @@ describe "Example API #{ENDPOINT} Endpoint" do
 
   context "GET Comment: #{ENDPOINT}" do
     #This example shows you how to pass in query parameters
-    before(:all) { @get = api.get("#{ENDPOINT}", { postId: 5 }) }
+    #get[0] gets the first index of the results output
+    before(:all) { @get = api.get(ENDPOINT, { postId: 5 }) }
     it { expect(@get.code).to eq 200 }
     it { expect(@get.body.is_a? String).to eq true }
     it { expect(json_parse(@get.body)).not_to be_empty }
     it { expect(@get.count).to eq 5 }
-    #get[0] gets the first index of the results
     it { expect(@get[0]["postId"].is_a? Integer).to eq true }
     it { expect(@get[0]["postId"]).to be > 0 }
     it { expect(@get[0]["postId"]).to eq 5 }

@@ -54,7 +54,7 @@ Repository: git@github.com:isonic1/ruby-api-framework.git
 
 3. Install bundler: ```gem install bundler``` 
 
-4. Clone the repo: ```git@github.com:isonic1/ruby-api-framework.git```
+4. Clone the repo: ```git clone git@github.com:isonic1/ruby-api-framework.git```
 
 5. Go into repo: ```cd ruby-api-framework```
 
@@ -75,11 +75,14 @@ Repository: git@github.com:isonic1/ruby-api-framework.git
 
 * You should see tests running after.
 
-4. Use the runner.rb script. *** PREFERRED METHOD ***
+*** PREFERRED RUN METHOD ***
+
+4. Use the runner.rb script.
     * `$ ruby runner.rb specs (list all specs)`
+    * `$ ruby runner.rb (Run all specs)`
     * `$ ruby runner.rb posts (runs all posts tests)`
-    * `$ ruby runner.rb parallel (runs all specs in parallel using parallel_rspec library. Merges html reports into one!)`
-    * `$ ruby runner.rb failures (runs only the failures from previous test run)`
+    * `$ ruby runner.rb parallel (runs all specs in parallel using parallel_rspec gem. Merges html reports into one afterward!)`
+    * `$ ruby runner.rb failures (Reruns failures from previous test run via failures.txt)`
 
 ***Test Results:***
 
@@ -87,7 +90,7 @@ Repository: git@github.com:isonic1/ruby-api-framework.git
 
 2. Json report: ruby-api-framework//output/rspec.json
 
-3. When tests are run in parallel, by default they generate a rspec.html (rspec2.html...) report for every process. I created a script "merge_reports.rb" to combine all reports into one after the tests complete.
+3. When tests are run in parallel, by default they generate a rspec.html ... rspec2.html etc... eport for every process. I created a script "merge_reports.rb" to combine all reports into one after the tests complete.
 
 4. Rspec has a bug when using `--color` with adding ascii characters to the html report. I created a new html formatter to fix this issue. Additionally, I capture the full request path on every api call and print it inside the report on failures. I also modified the html snippet extractor to capture the entire test so you dont have to open the framework to see the logic.
     * See the .rspec, .rspec_parallel, and spec_helper.rb files for rspec settings.
@@ -95,7 +98,7 @@ Repository: git@github.com:isonic1/ruby-api-framework.git
 ***Debugging with IRB: (Interactive Ruby REPL)***
 
 * Use pry "binding.pry" in the code to put the framework into IRB with loaded classes and variables. 
-* See spec/post_specs.rb for examples.
+* See spec/post_specs.rb for examples. Though this can be placed in any ruby file to set a break point at any point.
 
 ***Adding a Test***
 

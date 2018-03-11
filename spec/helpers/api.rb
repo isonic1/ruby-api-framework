@@ -4,16 +4,13 @@ class RubyApi
 
   include HTTParty
 
-  #debugging for HTTParty
-  #debug_output $stdout
   #no_follow true
 
   HTTParty::Basement.default_options.update(verify: false)
-
-  BOUNDARY = "AaB03x"
     
-  def initialize base_uri
+  def initialize base_uri, prefix
     @base_uri = base_uri #You can make this an evironment variables
+    @prefix = prefix #If your api has multiple versions you can change it here... e.g "/v1"
     initialize_httparty
   end
 
@@ -35,7 +32,7 @@ class RubyApi
     rescue StandardError => e
       puts "There was an exception (#{e.class}: #{e.message})"
     end
-    $request_uri = r.request.uri
+    $request_uri = r.request.uri #setting a global $request_uri variable so the new_html_formatter.rb inserts the URI into the report.
     r
   end
 
@@ -52,6 +49,7 @@ class RubyApi
     r
   end
   
+  #post_body converts the body to JSON which the post method does not. Some services expect this or do not so change to post if it's not needed. 
   def post_body(path, body = {})
     r = self.class.post(api_prefix + path, body: JSON.generate(body))
     begin
@@ -119,9 +117,8 @@ class RubyApi
 
   private
   
-  #If your api has multiple versions you can change it here...
+  #If your api has multiple versions you can change it here... e.g "/v1"
   def api_prefix
-    #"/v1"
-    "" #setting to empty string for this test API
+    @prefix
   end
 end

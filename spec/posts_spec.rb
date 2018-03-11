@@ -46,7 +46,7 @@ describe "Example API #{ENDPOINT} Endpoint" do
   context "GET Posts Comments: #{ENDPOINT}/1/comments" do
     before(:all) { @get = api.get("#{ENDPOINT}/1/comments") }
     it { expect(@get.code).to eq 200 }
-    it { expect(@get.body.is_a? String).to eq true }
+    it { expect(@get.body.is_a? Integer).to be_truthy, "Expected validation to be true, but got false. This should be a String!" } #Example of a custom matcher. Fail on purpose.
     it { expect(json_parse(@get.body)).not_to be_empty }
   end
 
@@ -105,6 +105,7 @@ describe "Example API #{ENDPOINT} Endpoint" do
   
   context "DELETE Posts: #{ENDPOINT}/1" do
     before(:all) do
+      #You could seed this data by doing a POST first, then DELETE, then do a GET to make sure it's deleted.
       @delete = api.delete("#{ENDPOINT}/1")
       #The delete doesn't actually delete so the assertions for this GET will fail. 
       #You'd want to check that the GET gets a 404 if it really did delete the record.

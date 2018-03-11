@@ -19,7 +19,8 @@ RSpec.configure do |config|
   #Before Suite hook
   config.before :all do
     #initialize the API Class
-    @api = RubyApi.new("https://jsonplaceholder.typicode.com") #You can make this URI an environment variable if you want...
+    #You can make this (first param) URI an environment variable if you want... second param is the prefix. e.g. /v1, /v2 for multiple API versions. This example API does not utilize versions.
+    @api = RubyApi.new("https://jsonplaceholder.typicode.com", "") 
   end
   
   #After Suite hook
