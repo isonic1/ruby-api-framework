@@ -1,0 +1,9 @@
+--format progress
+--format ParallelTests::RSpec::RuntimeLogger --out ./output/rspec_parallel_runtime.txt
+--require ./report_formatter/new_html_formatter.rb
+--format NewHtmlFormatter
+--out ./output/rspec<%= ENV['TEST_ENV_NUMBER'] %>.html
+--format j
+--out ./output/rspec<%= ENV['TEST_ENV_NUMBER'] %>.json
+--format RspecJunitFormatter
+--out ./output/rspec<%= ENV['TEST_ENV_NUMBER'] %>.xml

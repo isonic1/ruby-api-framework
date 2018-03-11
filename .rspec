@@ -1,0 +1,9 @@
+--color
+--require spec_helper
+--require ./report_formatter/new_html_formatter.rb
+--format NewHtmlFormatter
+--out ./output/rspec.html
+--format j
+--out ./output/rspec.json
+--format RspecJunitFormatter
+--out ./output/rspec.xml
