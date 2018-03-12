@@ -1,4 +1,4 @@
-#I got an insperation from a GIST to do this. I would link the gist here but have lost it. Anyways, thank you (whomeever you are) for solving this solution...
+#I got an insperation from a GIST to do this. I would link the gist here but have lost it. Anyways, thank you (whomeever you are) for solving this problem...
 
 #!/usr/bin/env ruby
 require 'nokogiri'
@@ -60,7 +60,7 @@ end
 DURATION_REGEXP          = /<strong>([\d.]*).*<\/strong>/
 EXAMPLES_FAILURES_REGEXP = /"(.*)"/
 
-def report_merger files
+def report_merger files, report
   #binding.pry
 
   report_name = Nokogiri::HTML(open(files.first))
@@ -82,6 +82,6 @@ def report_merger files
   report_name = update_tag_id(report_name)
 
   report_name = update_titles(report_name, durations, examples_count, failures_count, pending_count)
-
-  File.open("./output/rspec.html", 'w') {|f| f.write(report_name.to_html) }
+  
+  File.open("./output/#{report}", 'w') {|f| f.write(report_name.to_html) }
 end

@@ -1,11 +1,14 @@
 require 'os'
 require_relative 'merge_reports'
 
+#set the report name for merged parallel reports.
+REPORT = "rspec.html"
+
 #merge parallel_rspec reports into one report...
 def merge_rspec_reports
   reports = Dir.glob("./output/rspec*.html")
   unless reports.empty?
-    report_merger reports if reports.count > 1
+    report_merger reports, REPORT if reports.count > 1
   end
 end
 
@@ -47,5 +50,5 @@ else
 end
 
 if OS.mac?
-  %x(open output/rspec.html) unless File.zero? "output/rspec.html"
+  %x(open output/#{REPORT}) unless File.zero? "output/#{REPORT}"
 end
